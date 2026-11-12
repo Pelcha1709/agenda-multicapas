@@ -26,9 +26,14 @@ body {
   min-height: 100vh;
 }
 
+#root {
+  width: 100%;
+}
+
 .container {
   width: 100%;
   max-width: 800px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -63,6 +68,7 @@ form {
   form {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .form-actions {
     grid-column: span 3;
   }
@@ -110,7 +116,7 @@ button {
   transition: background-color 0.2s;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   background-color: var(--primary-hover);
 }
 
@@ -119,21 +125,18 @@ button:disabled {
   cursor: not-allowed;
 }
 
-#statusMessage {
+.status-message {
   margin-top: 0.75rem;
   font-size: 0.9rem;
   font-weight: 500;
-  display: none;
 }
 
-#statusMessage.error {
+.status-message.error {
   color: var(--error);
-  display: block;
 }
 
-#statusMessage.success {
+.status-message.success {
   color: var(--success);
-  display: block;
 }
 
 .contact-list-header {
@@ -141,6 +144,10 @@ button:disabled {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+}
+
+.contact-list-header h2 {
+  margin-bottom: 0;
 }
 
 .contact-grid {
@@ -179,4 +186,5 @@ button:disabled {
   color: var(--text-muted);
   padding: 2rem;
   font-style: italic;
+  grid-column: 1 / -1;
 }
